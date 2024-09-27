@@ -1,16 +1,27 @@
-import {Header} from './header/Header.jsx';
-import {Footer} from './footer/Footer.jsx';
-import {Index} from './restorane/Restorane';
-import {Names} from './names/Names.jsx';
-export const App=()=>{
-    return(
-        <>
-            <Header/>
-            <div className="restorane-names">
-                <Names/>
-            </div>
-            <Index/>
-            <Footer/>
-        </>
-    )
-}
+import { useState } from "react";
+import { restaurants } from "/database/mock";
+import { Layout } from "./layout/Layout";
+import { Restorane } from "./restorane/Restorane";
+import { Tabmenu } from "./tabmenu/Tabmenu";
+export const App = () => {
+	const startTabItem = restaurants[0].id;
+	const [activeTab, setNewTab] = useState(startTabItem);
+	const restorane = restaurants.filter((restorane) => {
+		return restorane.id === activeTab;
+	});
+	const handleClick = (selectedItem) => {
+		setNewTab(selectedItem);
+	};
+	return (
+		<Layout>
+			<div className="restorane-names">
+				<Tabmenu
+					tabActive={activeTab}
+					tabElements={restaurants}
+					tabSelector={handleClick}
+				/>
+			</div>
+			<Restorane restorane={restorane} />
+		</Layout>
+	);
+};

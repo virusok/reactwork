@@ -1,5 +1,3 @@
-export const Footer=()=>{
-    return(
-        <footer>2024</footer>
-    )
-}
+export const Footer = () => {
+	return <footer>2024</footer>;
+};
