@@ -6,7 +6,7 @@ import { Tabmenu } from "./tabmenu/Tabmenu";
 export const App = () => {
 	const startTabItem = restaurants[0].id;
 	const [activeTab, setNewTab] = useState(startTabItem);
-	const restorane = restaurants.filter((restorane) => {
+	const restorane = restaurants.find((restorane) => {
 		return restorane.id === activeTab;
 	});
 	const handleClick = (selectedItem) => {
@@ -14,7 +14,7 @@ export const App = () => {
 	};
 	return (
 		<Layout>
-			<div className="restorane-names">
+			<div className='restorane-names'>
 				<Tabmenu
 					tabActive={activeTab}
 					tabElements={restaurants}

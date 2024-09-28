@@ -1,24 +1,28 @@
 import { Menu } from "../menu/Menu";
 import { Review } from "../review/Review";
-export const RestoraneItem = ({ menu, reviews }) => {
+export const RestoraneItem = ({ restorane }) => {
 	return (
 		<div className='restorane-item'>
 			<h3>Меню ресторана</h3>
-			<ul className='restorane-catalog'>
-				{menu.length ? (
-					menu.map((menu) => <Menu menuItem={menu.name} />)
-				) : (
-					<li>{"У ресторана нет меню."}</li>
-				)}
-			</ul>
+			{restorane.menu.length ? (
+				<ul className='restorane-catalog'>
+					{restorane.menu.map((menu) => (
+						<Menu menuItem={menu.name} />
+					))}
+				</ul>
+			) : (
+				"У ресторана нет меню."
+			)}
 			<h3>Отзывы</h3>
-			<ul className='restorane-reviews'>
-				{reviews.length ? (
-					reviews.map((reviews) => <Review reviewItem={reviews.text} />)
-				) : (
-					<li>{"У ресторана нет отзывов."}</li>
-				)}
-			</ul>
+			{restorane.reviews.length ? (
+				<ul className='restorane-reviews'>
+					{restorane.reviews.map((reviews) => (
+						<Review reviewItem={reviews.text} />
+					))}
+				</ul>
+			) : (
+				"У ресторана нет отзывов."
+			)}
 		</div>
 	);
 };
