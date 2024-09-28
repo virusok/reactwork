@@ -1,5 +1,6 @@
 import { Menu } from "../menu/Menu";
 import { Review } from "../review/Review";
+import { ReviewForm } from "../../reviewform/ReviewForm";
 export const RestoraneItem = ({ restorane }) => {
 	return (
 		<div className='restorane-item'>
@@ -23,6 +24,7 @@ export const RestoraneItem = ({ restorane }) => {
 			) : (
 				"У ресторана нет отзывов."
 			)}
+			<ReviewForm />
 		</div>
 	);
 };
