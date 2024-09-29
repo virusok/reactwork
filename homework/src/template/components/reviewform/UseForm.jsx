@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+
 const RatingMinCounter = 1;
 const RatingMaxCounter = 5;
 const DEFAULT_VALUES = {
@@ -6,28 +7,29 @@ const DEFAULT_VALUES = {
 	reviewText: "",
 	rating: RatingMinCounter,
 };
-const CASE_SET_NAME = "setName";
-const CASE_SET_REVIEW = "setReview";
-const CASE_SET_RATING = "setRating";
-const CASE_CLEAR_FORM = "clearForm";
+const SET_NAME = "setName";
+const SET_REVIEW = "setReview";
+const SET_RATING = "setRating";
+const CLEAR_FORM = "clearForm";
 const reducer = (state, action) => {
-	const { type, payload } = action;
+	const { type, Task } = action;
 	switch (type) {
-		case CASE_SET_NAME:
+		case SET_NAME:
 			return {
 				...DEFAULT_VALUES,
-				userName: payload,
+				userName: Task,
 			};
-		case CASE_SET_REVIEW:
+		case SET_REVIEW:
 			return {
 				...state,
-				reviewText: payload,
+				reviewText: Task,
 			};
-		case CASE_SET_RATING:
+		case SET_RATING:
 			return {
-				...DEFAULT_VALUES,
+				...state,
+				rating: Task,
 			};
-		case CASE_CLEAR_FORM:
+		case CLEAR_FORM:
 			return {
 				...DEFAULT_VALUES,
 			};
@@ -39,28 +41,29 @@ const reducer = (state, action) => {
 
 export const UseForm = () => {
 	const [form, dispatch] = useReducer(reducer, DEFAULT_VALUES);
-	const { userName, reviewText } = form;
+	const { userName, reviewText, rating } = form;
 
 	const setName = (value) => {
-		dispatch({ type: CASE_SET_NAME, payload: value });
+		dispatch({ type: SET_NAME, Task: value });
 	};
 	const setReview = (value) => {
-		dispatch({ type: CASE_SET_REVIEW, payload: value });
+		dispatch({ type: SET_REVIEW, Task: value });
 	};
-	const clearRating = () => {
-		dispatch({ type: CASE_SET_RATING });
+	const setRating = (value) => {
+		if (value >= RatingMinCounter && value <= RatingMaxCounter) {
+			dispatch({ type: SET_RATING, Task: value });
+		}
 	};
 	const clearForm = () => {
-		dispatch({ type: CASE_CLEAR_FORM });
+		dispatch({ type: CLEAR_FORM });
 	};
 	return {
 		userName,
 		reviewText,
-		clearRating,
 		setName,
 		setReview,
+		rating,
+		setRating,
 		clearForm,
-		RatingMaxCounter,
-		RatingMinCounter,
 	};
 };

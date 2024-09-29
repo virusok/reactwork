@@ -1,37 +1,13 @@
-import { useState } from "react";
-
-export const Counter = (limiting) => {
-	let [value, setValue] = useState(() => {
-		if (limiting.limiting === true) {
-			return limiting.minCounter;
-		} else {
-			return 0;
-		}
-	});
+export const Counter = ({ value, setValue }) => {
 	const counterPlus = () => {
-		if (limiting.limiting === true) {
-			if (value < limiting.maxCounter) {
-				setValue(value + 1);
-			} else {
-				return value;
-			}
-		} else {
-			setValue(value + 1);
-		}
+		setValue(value + 1);
 	};
+
 	const counterMinus = () => {
-		if (limiting.limiting === true) {
-			if (value > limiting.minCounter) {
-				value != 0 ? setValue(value - 1) : value;
-			} else {
-				return value;
-			}
-		} else {
-			value != 0 ? setValue(value - 1) : value;
-		}
+		setValue(value - 1);
 	};
 	return (
-		<div className='counters' value={value}>
+		<div className='counters'>
 			<button onClick={counterPlus} className='counter counter-plus'>
 				+
 			</button>

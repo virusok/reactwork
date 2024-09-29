@@ -5,16 +5,15 @@ export const ReviewForm = (props) => {
 	const {
 		userName,
 		reviewText,
+		rating,
+		setRating,
 		setName,
 		setReview,
-		clearRating,
 		clearForm,
-		RatingMinCounter,
-		RatingMaxCounter,
 	} = UseForm();
 
 	return (
-		<form action='#'>
+		<form action='#' className='form'>
 			<div className='form-input'>
 				<label>Ваше имя</label>
 				<input
@@ -32,11 +31,8 @@ export const ReviewForm = (props) => {
 				/>
 			</div>
 			<div className='form-rating'>
-				<Counter
-					limiting={true}
-					minCounter={RatingMinCounter}
-					maxCounter={RatingMaxCounter}
-				/>
+				<span>Ваша оценка ресторану</span>
+				<Counter value={rating} setValue={setRating} />
 			</div>
 			<button onClick={clearForm} className='form-clear'>
 				Очистить
