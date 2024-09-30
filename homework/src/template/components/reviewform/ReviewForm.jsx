@@ -1,4 +1,4 @@
-import { UseForm } from "./UseForm";
+import { useForm } from "./useForm";
 import { Counter } from "../counter/Counter";
 
 export const ReviewForm = (props) => {
@@ -10,7 +10,7 @@ export const ReviewForm = (props) => {
 		setName,
 		setReview,
 		clearForm,
-	} = UseForm();
+	} = useForm();
 
 	return (
 		<form action='#' className='form'>

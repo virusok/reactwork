@@ -4,7 +4,7 @@ export const Counter = ({ value, setValue }) => {
 	};
 
 	const counterMinus = () => {
-		setValue(value - 1);
+		value != 0 ? setValue(value - 1) : value;
 	};
 	return (
 		<div className='counters'>

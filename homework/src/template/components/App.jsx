@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { restaurants } from "/database/mock";
 import { Layout } from "./layout/Layout";
-import { Restorane } from "./restorane/Restorane";
+import { Restaurant } from "./restaurant/Restaurant";
 import { Tabmenu } from "./tabmenu/Tabmenu";
 export const App = () => {
-	const startTabItem = restaurants[0].id;
-	const [activeTab, setNewTab] = useState(startTabItem);
-	const restorane = restaurants.find((restorane) => {
-		return restorane.id === activeTab;
+	const firstTab = restaurants[0].id;
+	const [activeTab, setTab] = useState(firstTab);
+	const selectedRestaurant = restaurants.find(({ id }) => {
+		return id === activeTab;
 	});
-	const handleClick = (selectedItem) => {
-		setNewTab(selectedItem);
+	const tabHandleClick = (selectedTab) => {
+		setTab(selectedTab);
 	};
 	return (
 		<Layout>
@@ -18,10 +18,10 @@ export const App = () => {
 				<Tabmenu
 					tabActive={activeTab}
 					tabElements={restaurants}
-					tabSelector={handleClick}
+					tabSelector={tabHandleClick}
 				/>
 			</div>
-			<Restorane restorane={restorane} />
+			<Restaurant restaurant={selectedRestaurant} />
 		</Layout>
 	);
 };

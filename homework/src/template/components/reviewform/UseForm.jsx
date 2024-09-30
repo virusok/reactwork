@@ -39,7 +39,7 @@ const reducer = (state, action) => {
 	}
 };
 
-export const UseForm = () => {
+export const useForm = () => {
 	const [form, dispatch] = useReducer(reducer, DEFAULT_VALUES);
 	const { userName, reviewText, rating } = form;
 
