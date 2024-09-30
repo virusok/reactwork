@@ -8,7 +8,7 @@ export const RestaurantItem = ({ restaurant }) => {
 			{restaurant.menu.length ? (
 				<ul className='restorane-catalog'>
 					{restaurant.menu.map((menu) => (
-						<Menu menuItem={menu.name} />
+						<Menu menuItem={menu} />
 					))}
 				</ul>
 			) : (
@@ -18,7 +18,7 @@ export const RestaurantItem = ({ restaurant }) => {
 			{restaurant.reviews.length ? (
 				<ul className='restorane-reviews'>
 					{restaurant.reviews.map((reviews) => (
-						<Review reviewItem={reviews.text} />
+						<Review reviewItem={reviews} />
 					))}
 				</ul>
 			) : (

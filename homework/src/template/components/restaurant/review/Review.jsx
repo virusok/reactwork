@@ -1,3 +1,3 @@
 export const Review = ({ reviewItem }) => {
-	return <li>{reviewItem}</li>;
+	return <li>{reviewItem.text}</li>;
 };

@@ -6,7 +6,7 @@ export const Menu = ({ menuItem }) => {
 
 	return (
 		<li>
-			{menuItem} <Counter value={value} setValue={setValue} />
+			{menuItem.name} <Counter value={value} setValue={setValue} />
 		</li>
 	);
 };
