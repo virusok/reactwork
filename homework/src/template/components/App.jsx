@@ -3,6 +3,7 @@ import { restaurants } from "/database/mock";
 import { Layout } from "./layout/Layout";
 import { Restaurant } from "./restaurant/Restaurant";
 import { Tabmenu } from "./tabmenu/Tabmenu";
+import style from "./style.module.css";
 export const App = () => {
 	const firstTab = restaurants[0].id;
 	const [activeTab, setTab] = useState(firstTab);
@@ -14,7 +15,7 @@ export const App = () => {
 	};
 	return (
 		<Layout>
-			<div className='restorane-names'>
+			<div className={style.restorane_names}>
 				<Tabmenu
 					tabActive={activeTab}
 					tabElements={restaurants}

@@ -1,3 +1,4 @@
+import style from "./style.module.css";
 export const Counter = ({ value, setValue }) => {
 	const counterPlus = () => {
 		setValue(value + 1);
@@ -7,12 +8,18 @@ export const Counter = ({ value, setValue }) => {
 		value != 0 ? setValue(value - 1) : value;
 	};
 	return (
-		<div className='counters'>
-			<button onClick={counterPlus} className='counter counter-plus'>
+		<div className={style.counters}>
+			<button
+				onClick={counterPlus}
+				className={`${style.counter} ${style.counter_plus}`}
+			>
 				+
 			</button>
-			<span className='counter-value'>{value}</span>
-			<button onClick={counterMinus} className='counter counter-minus'>
+			<span className={`${style.counter_value}`}>{value}</span>
+			<button
+				onClick={counterMinus}
+				className={`${style.counter} ${style.counter_minus}`}
+			>
 				-
 			</button>
 		</div>

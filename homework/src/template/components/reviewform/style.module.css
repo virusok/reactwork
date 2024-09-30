@@ -1,0 +1,40 @@
+.form {
+	border: 1px dashed #e5eeff;
+	padding: 10px;
+	list-style: none;
+	border-radius: 1em;
+}
+.form_input {
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+}
+.form_input label {
+	margin-bottom: 4px;
+}
+.form_input input {
+	border: 1px solid #deebff;
+	background: #fff;
+	padding: 10px;
+	border-radius: 1em;
+	outline-color: #004cff;
+}
+.form_clear {
+	background: #676767;
+	padding: 10px 20px;
+	border-radius: 1em;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	margin: 10px 0px;
+}
+.form_rating {
+	margin-top: 10px;
+}
+.form_rating_title {
+	margin-bottom: 4px;
+	display: block;
+}
+.form_clear:hover {
+	filter: brightness(1.2);
+}
