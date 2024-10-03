@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 const progressBar = "progressbar";
 export const ProgressBar = () => {
-	const [ProgressBarWidth, setProgressBarWidth] = useState(0);
+	const [progressBarWidth, setProgressBarWidth] = useState(0);
 	useEffect(() => {
 		const checkHeight = () => {
 			const windowHeight = document.body.clientHeight - window.innerHeight;
@@ -12,6 +12,6 @@ export const ProgressBar = () => {
 		return () => {
 			window.removeEventListener("scroll", checkHeight);
 		};
-	}, [ProgressBarWidth]);
-	return <div className={progressBar} style={{ width: ProgressBarWidth }}></div>;
+	}, [progressBarWidth]);
+	return <div className={progressBar} style={{ width: progressBarWidth }}></div>;
 };

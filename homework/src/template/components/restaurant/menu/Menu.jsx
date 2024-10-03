@@ -1,12 +1,17 @@
-import { useState } from "react";
-import { Counter } from "../../counter/Counter";
-
-export const Menu = ({ menuItem }) => {
-	let [value, setValue] = useState(0);
-
+import { MenuItem } from "../menuItem/MenuItem";
+export const Menu = ({ menu }) => {
 	return (
-		<li>
-			{menuItem.name} <Counter value={value} setValue={setValue} />
-		</li>
+		<>
+			<h3>Меню ресторана</h3>
+			{menu.length ? (
+				<ul className='restorane-catalog'>
+					{menu.map((menu, index) => (
+						<MenuItem key={index} menuItem={menu.name} />
+					))}
+				</ul>
+			) : (
+				"У ресторана нет меню."
+			)}
+		</>
 	);
 };
