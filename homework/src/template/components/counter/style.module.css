@@ -18,13 +18,13 @@
 .counter:hover {
 	filter: brightness(1.3);
 }
-.counter_plus {
+.counterPlus {
 	background: #2b692e;
 }
-.counter_minus {
+.counterMinus {
 	background: #c95134;
 }
-.counter_value {
+.counterValue {
 	margin: 0px 5px;
 	background: #fff;
 	padding: 0px 20px;
