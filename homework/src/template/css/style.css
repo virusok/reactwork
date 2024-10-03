@@ -5,27 +5,3 @@ body {
 	background: #fff;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-header {
-	background: #e9e9e9;
-	border-bottom: 1px solid rgb(0 0 0 / 5%);
-	display: flex;
-	justify-content: space-between;
-	padding: 10px;
-	align-items: center;
-}
-.header_title {
-	text-transform: uppercase;
-	font-weight: bold;
-}
-.header_user {
-	background: #fff;
-	border-radius: 1em;
-	padding: 10px;
-}
-
-footer {
-	background: #e9e9e9;
-	border-top: 1px solid rgb(0 0 0 / 5%);
-	padding: 10px;
-	text-align: center;
-}
