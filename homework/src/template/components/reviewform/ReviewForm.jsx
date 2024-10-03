@@ -14,7 +14,7 @@ export const ReviewForm = (props) => {
 
 	return (
 		<form action='#' className={style.form}>
-			<div className={style.formInput}>
+			<div className={style.form_input}>
 				<label>Ваше имя</label>
 				<input
 					type='text'
@@ -22,7 +22,7 @@ export const ReviewForm = (props) => {
 					onChange={(event) => setName(event.target.value)}
 				/>
 			</div>
-			<div className={style.formInput}>
+			<div className={style.form_input}>
 				<label>Ваш отзыв</label>
 				<input
 					type='text'
@@ -30,11 +30,11 @@ export const ReviewForm = (props) => {
 					onChange={(event) => setReview(event.target.value)}
 				/>
 			</div>
-			<div className={style.formRating}>
-				<span className={style.form_ratingTitle}>Ваша оценка ресторану</span>
+			<div className={style.form_rating}>
+				<span className={style.form_rating_title}>Ваша оценка ресторану</span>
 				<Counter value={rating} setValue={setRating} />
 			</div>
-			<button onClick={clearForm} className={style.formClear}>
+			<button onClick={clearForm} className={style.form_clear}>
 				Очистить
 			</button>
 		</form>

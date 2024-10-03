@@ -1,14 +1,13 @@
 import style from "./style.module.css";
-import classnames from "classnames/bind";
-const cs = classnames.bind(style);
 export const Tabmenu = ({ tabElements, tabSelector, tabActive }) => {
 	return tabElements.map((element) => {
-		const tabClasses = cs("restoraneName", {
-			active: tabActive === element.id,
-		});
 		return (
 			<button
-				className={classnames(tabClasses)}
+				className={
+					element.id == tabActive
+						? `${style.restorane_name} ${style.active}`
+						: style.restorane_name
+				}
 				onClick={() => tabSelector(element.id)}
 			>
 				{element.name}
