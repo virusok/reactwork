@@ -12,13 +12,8 @@ export const ProgressBar = () => {
 		return () => {
 			window.removeEventListener("scroll", checkHeight);
 		};
-<<<<<<< HEAD
 	}, []);
 	return (
 		<div className={style.progressbar} style={{ width: progressBarWidth }}></div>
 	);
-=======
-	}, [progressBarWidth]);
-	return <div className={progressBar} style={{ width: progressBarWidth }}></div>;
->>>>>>> main
 };
