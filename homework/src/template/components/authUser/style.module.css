@@ -1,0 +1,9 @@
+.headerUser {
+	background: #fff;
+	border-radius: 1em;
+	padding: 2px 2px 2px 12px;
+}
+.headerUser span {
+	padding-right: 10px;
+	font-size: 14px;
+}
