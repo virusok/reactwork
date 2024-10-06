@@ -1,6 +1,6 @@
 import { useForm } from "./useForm";
 import { Counter } from "../counter/Counter";
-
+import style from "./style.module.css";
 export const ReviewForm = (props) => {
 	const {
 		userName,
@@ -13,8 +13,8 @@ export const ReviewForm = (props) => {
 	} = useForm();
 
 	return (
-		<form action='#' className='form'>
-			<div className='form-input'>
+		<form action='#' className={style.form}>
+			<div className={style.formInput}>
 				<label>Ваше имя</label>
 				<input
 					type='text'
@@ -22,7 +22,7 @@ export const ReviewForm = (props) => {
 					onChange={(event) => setName(event.target.value)}
 				/>
 			</div>
-			<div className='form-input'>
+			<div className={style.formInput}>
 				<label>Ваш отзыв</label>
 				<input
 					type='text'
@@ -30,11 +30,11 @@ export const ReviewForm = (props) => {
 					onChange={(event) => setReview(event.target.value)}
 				/>
 			</div>
-			<div className='form-rating'>
-				<span>Ваша оценка ресторану</span>
+			<div className={style.formRating}>
+				<span className={style.form_ratingTitle}>Ваша оценка ресторану</span>
 				<Counter value={rating} setValue={setRating} />
 			</div>
-			<button onClick={clearForm} className='form-clear'>
+			<button onClick={clearForm} className={style.formClear}>
 				Очистить
 			</button>
 		</form>
