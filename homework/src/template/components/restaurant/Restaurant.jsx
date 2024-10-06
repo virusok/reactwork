@@ -3,8 +3,10 @@ import { Menu } from "./menu/Menu";
 import { Review } from "./review/Review";
 import { ReviewForm } from "../reviewform/ReviewForm";
 import { Tabmenu } from "../tabmenu/Tabmenu";
+import { useUser } from "../themeProviders/userContext/useUser";
 import style from "./style.module.css";
 export const Restaurant = ({ restaurant }) => {
+	const { auth } = useUser();
 	const firstTab = restaurant[0].id;
 	const [activeTab, setTab] = useState(firstTab);
 	const selectedRestaurant = restaurant.find(({ id }) => {
@@ -25,7 +27,7 @@ export const Restaurant = ({ restaurant }) => {
 			<div className={style.restoraneItem}>
 				<Menu key={selectedRestaurant.id} menu={selectedRestaurant.menu} />
 				<Review reviews={selectedRestaurant.reviews} />
-				<ReviewForm />
+				{auth === "" ? "" : <ReviewForm />}
 			</div>
 		</>
 	);

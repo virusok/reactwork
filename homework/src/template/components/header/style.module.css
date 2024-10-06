@@ -10,8 +10,6 @@
 	text-transform: uppercase;
 	font-weight: bold;
 }
-.headerUser {
-	background: #fff;
-	border-radius: 1em;
+.changeBtn {
 	padding: 10px;
 }

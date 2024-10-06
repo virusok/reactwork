@@ -1,18 +1,16 @@
 import style from "./style.module.css";
-import classnames from "classnames/bind";
-const cs = classnames.bind(style);
+import { Button } from "../Button/Button";
 export const Tabmenu = ({ tabElements, tabSelector, tabActive }) => {
 	return tabElements.map((element) => {
-		const tabClasses = cs("restoraneName", {
-			active: tabActive === element.id,
-		});
 		return (
-			<button
-				className={classnames(tabClasses)}
-				onClick={() => tabSelector(element.id)}
-			>
-				{element.name}
-			</button>
+			<>
+				<Button
+					isActive={tabActive === element.id}
+					text={element.name}
+					onClick={() => tabSelector(element.id)}
+					className={style.btnMargin}
+				/>
+			</>
 		);
 	});
 };
