@@ -1,8 +1,8 @@
-import { useButton } from "../themeContext/buttonsContext/useButton";
+import { useTheme } from "../themeProviders/themeContext/useTheme";
 import style from "./style.module.css";
 import classnames from "classnames";
-export const Button = ({ text, onClick, isActive, className }) => {
-	const { theme } = useButton();
+export const Button = ({ text, onClick, isActive, className, btnActive }) => {
+	const { theme } = useTheme();
 	return (
 		<button
 			className={classnames(style.default, className, {
@@ -11,6 +11,7 @@ export const Button = ({ text, onClick, isActive, className }) => {
 				[style.white]: theme === "white",
 			})}
 			onClick={onClick}
+			disabled={btnActive}
 		>
 			{text}
 		</button>

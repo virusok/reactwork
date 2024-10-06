@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ButtonsContext } from "..";
-export const ButtonsProvider = ({ children }) => {
+import { ThemeContext } from ".";
+export const ThemeProvider = ({ children }) => {
 	const [theme, setTheme] = useState("white");
 	const swapTheme = () => {
 		setTheme((current) => {
@@ -12,8 +12,8 @@ export const ButtonsProvider = ({ children }) => {
 		});
 	};
 	return (
-		<ButtonsContext.Provider value={{ theme, swapTheme }}>
+		<ThemeContext.Provider value={{ theme, swapTheme }}>
 			{children}
-		</ButtonsContext.Provider>
+		</ThemeContext.Provider>
 	);
 };

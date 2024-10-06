@@ -1,5 +1,5 @@
 import { Button } from "../Button/Button";
-import { useUser } from "../themeContext/userContext/useUser";
+import { useUser } from "../themeProviders/userContext/useUser";
 import style from "./style.module.css";
 import classnames from "classnames";
 export const AuthUser = () => {
@@ -10,6 +10,7 @@ export const AuthUser = () => {
 		>
 			<span>{auth}</span>
 			<Button
+				className={style.lcBtn}
 				isActive={auth != "" ? "" : "active"}
 				onClick={authorization}
 				text={auth != "" ? "Выйти" : "Войти"}
