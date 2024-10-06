@@ -1,8 +1,9 @@
+import style from "./style.module.css";
 export const Header = () => {
 	return (
-		<header>
-			<div className='header-title'>Мои рестораны</div>
-			<div className='header-user'>Pavel(Rubicon)</div>
+		<header className={style.header}>
+			<div className={style.headerTitle}>Мои рестораны</div>
+			<div className={style.headerUser}>Pavel(Rubicon)</div>
 		</header>
 	);
 };

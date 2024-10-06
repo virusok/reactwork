@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-const progressBar = "progressbar";
+import style from "./style.module.css";
 export const ProgressBar = () => {
 	const [progressBarWidth, setProgressBarWidth] = useState(0);
 	useEffect(() => {
@@ -12,6 +12,8 @@ export const ProgressBar = () => {
 		return () => {
 			window.removeEventListener("scroll", checkHeight);
 		};
-	}, [progressBarWidth]);
-	return <div className={progressBar} style={{ width: progressBarWidth }}></div>;
+	}, []);
+	return (
+		<div className={style.progressbar} style={{ width: progressBarWidth }}></div>
+	);
 };
