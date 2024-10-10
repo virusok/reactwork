@@ -1,16 +1,19 @@
 import { Layout } from "./layout/Layout";
-import { restaurants } from "/database/mock";
-import { Restaurant } from "./restaurant/Restaurant";
+import { RestaurantPage } from "./restaurantPage/restaurantPage";
 import { ThemeProvider } from "./themeProviders/themeContext/themeContext";
 import { UserProvider } from "./themeProviders/userContext/userContext";
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 export const App = () => {
 	return (
-		<ThemeProvider>
-			<UserProvider>
-				<Layout>
-					<Restaurant restaurant={restaurants} />
-				</Layout>
-			</UserProvider>
-		</ThemeProvider>
+		<Provider store={store}>
+			<ThemeProvider>
+				<UserProvider>
+					<Layout>
+						<RestaurantPage />
+					</Layout>
+				</UserProvider>
+			</ThemeProvider>
+		</Provider>
 	);
 };

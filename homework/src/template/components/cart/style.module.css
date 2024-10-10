@@ -1,0 +1,34 @@
+.cartList {
+	background: #ffffff;
+	list-style: none;
+	padding: 10px 20px;
+	margin: 10px 10px;
+	border-radius: 1em;
+	border-top: 3px solid #004cff;
+	border-radius: 1em;
+	box-shadow: 0 0 10px 2px rgb(0 0 0 / 6%);
+}
+.cartList li {
+	padding: 6px;
+	background: #e5eeff;
+	border-radius: inherit;
+	margin: 1px 0px;
+	padding-left: 20px;
+}
+.cartList li:first-child {
+	margin-top: 0px;
+}
+.cartList li:last-child {
+	margin-bottom: 0px;
+}
+.cartList span {
+	display: inline-block;
+	text-align: center;
+	background: #fff;
+	min-width: 24px;
+	width: min-content;
+	padding: 4px;
+	border-radius: 1em;
+	color: #004cff;
+	font-weight: bold;
+}

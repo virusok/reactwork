@@ -1,13 +1,7 @@
 import style from "./style.module.css";
 import classnames from "classnames";
 import { Button } from "../Button/Button";
-export const Counter = ({ value, setValue }) => {
-	const counterPlus = () => {
-		setValue(value + 1);
-	};
-	const counterMinus = () => {
-		value != 0 ? setValue(value - 1) : value;
-	};
+export const Counter = ({ value, counterPlus, counterMinus }) => {
 	return (
 		<div className={style.counters}>
 			<Button
