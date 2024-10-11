@@ -1,14 +1,13 @@
 import style from "./style.module.css";
-import { ReviewItem } from "../reviewItem/ReviewItem";
 
-export const Review = ({ reviewId }) => {
+export const Review = ({ reviews }) => {
 	return (
 		<>
 			<h3>Отзывы</h3>
-			{reviewId.length ? (
+			{reviews.length ? (
 				<ul className={style.restoraneReviews}>
-					{reviewId.map((id) => (
-						<ReviewItem key={id} id={id} />
+					{reviews.map((review, index) => (
+						<li key={index}>{review.text}</li>
 					))}
 				</ul>
 			) : (
