@@ -2,15 +2,18 @@ import { useReducer } from "react";
 
 const ratingMinCounter = 1;
 const ratingMaxCounter = 5;
+const SET_NAME = "setName";
+const SET_REVIEW = "setReview";
+const CLEAR_FORM = "clearForm";
+const SET_RATING_PLUS = "counterPlusRating";
+const SET_RATING_MINUS = "counterMinusRating";
+
 const DEFAULT_VALUES = {
 	userName: "",
 	reviewText: "",
 	rating: ratingMinCounter,
 };
-const SET_NAME = "setName";
-const SET_REVIEW = "setReview";
-const SET_RATING = "setRating";
-const CLEAR_FORM = "clearForm";
+
 const reducer = (state, action) => {
 	const { type, element } = action;
 	switch (type) {
@@ -24,10 +27,15 @@ const reducer = (state, action) => {
 				...state,
 				reviewText: element,
 			};
-		case SET_RATING:
+		case SET_RATING_PLUS:
 			return {
 				...state,
-				rating: element,
+				rating: Math.min(state.rating + 1, ratingMaxCounter),
+			};
+		case SET_RATING_MINUS:
+			return {
+				...state,
+				rating: Math.max(state.rating - 1, ratingMinCounter),
 			};
 		case CLEAR_FORM:
 			return {
@@ -49,10 +57,11 @@ export const useForm = () => {
 	const setReview = (value) => {
 		dispatch({ type: SET_REVIEW, element: value });
 	};
-	const setRating = (value) => {
-		if (value >= ratingMinCounter && value <= ratingMaxCounter) {
-			dispatch({ type: SET_RATING, element: value });
-		}
+	const counterPlusRating = (value) => {
+		dispatch({ type: SET_RATING_PLUS, element: value });
+	};
+	const counterMinusRating = (value) => {
+		dispatch({ type: SET_RATING_MINUS, element: value });
 	};
 	const clearForm = () => {
 		dispatch({ type: CLEAR_FORM });
@@ -63,7 +72,8 @@ export const useForm = () => {
 		setName,
 		setReview,
 		rating,
-		setRating,
 		clearForm,
+		counterPlusRating,
+		counterMinusRating,
 	};
 };

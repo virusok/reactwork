@@ -1,13 +1,14 @@
 import { MenuItem } from "../menuItem/MenuItem";
 import style from "./style.module.css";
-export const Menu = ({ menu }) => {
+
+export const Menu = ({ menuId }) => {
 	return (
 		<>
 			<h3>Меню ресторана</h3>
-			{menu.length ? (
+			{menuId.length ? (
 				<ul className={style.restoraneCatalog}>
-					{menu.map((menu, index) => (
-						<MenuItem key={index} menuItem={menu.name} />
+					{menuId.map((id) => (
+						<MenuItem key={id} id={id} />
 					))}
 				</ul>
 			) : (
