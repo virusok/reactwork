@@ -14,7 +14,7 @@ export const Restaurant = ({ id }) => {
 		<>
 			<div className={style.restoraneItem}>
 				<Menu menuId={menu} />
-				<Review reviewId={reviews} />
+				<Review reviewsId={reviews} />
 				{auth === "" ? "" : <ReviewForm />}
 			</div>
 		</>
