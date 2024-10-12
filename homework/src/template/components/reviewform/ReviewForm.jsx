@@ -6,10 +6,11 @@ export const ReviewForm = (props) => {
 		userName,
 		reviewText,
 		rating,
-		setRating,
 		setName,
 		setReview,
 		clearForm,
+		counterPlusRating,
+		counterMinusRating,
 	} = useForm();
 
 	return (
@@ -32,7 +33,11 @@ export const ReviewForm = (props) => {
 			</div>
 			<div className={style.formRating}>
 				<span className={style.form_ratingTitle}>Ваша оценка ресторану</span>
-				<Counter value={rating} setValue={setRating} />
+				<Counter
+					value={rating}
+					counterPlus={counterPlusRating}
+					counterMinus={counterMinusRating}
+				/>
 			</div>
 			<button onClick={clearForm} className={style.formClear}>
 				Очистить
