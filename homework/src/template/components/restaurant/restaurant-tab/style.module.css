@@ -1,0 +1,34 @@
+.restaurantTab {
+	font-weight: bold;
+	border-radius: 1em;
+	cursor: pointer;
+	border: none;
+	border: 1px solid #838fa2;
+	text-decoration: none;
+	font-size: 14px;
+	padding: 4px 10px;
+	margin: 1px;
+	color: inherit;
+}
+.restaurantTab:hover {
+	background: transparent;
+	border: 1px solid #deebff;
+}
+.restaurantTab.active {
+	border: 1px solid transparent;
+	background: #004cff;
+	color: #fff;
+}
+.white {
+	background: #deebff;
+	cursor: pointer;
+	border: 1px solid transparent;
+}
+.dark {
+	background: #1c2633;
+	color: #fff;
+}
+.dark:hover {
+	background: #3c516e;
+	color: #fff;
+}

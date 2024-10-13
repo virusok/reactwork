@@ -1,19 +1,22 @@
 import style from "./style.module.css";
 import { ReviewItem } from "../reviewItem/ReviewItem";
-
-export const Review = ({ reviewId }) => {
+import { ReviewForm } from "../../reviewform/ReviewForm";
+import { useUser } from "../../themeProviders/userContext/useUser";
+export const Review = ({ reviewIds }) => {
+	const { auth } = useUser();
 	return (
 		<>
 			<h3>Отзывы</h3>
-			{reviewId.length ? (
+			{reviewIds.length ? (
 				<ul className={style.restoraneReviews}>
-					{reviewId.map((id) => (
+					{reviewIds.map((id) => (
 						<ReviewItem key={id} id={id} />
 					))}
 				</ul>
 			) : (
 				"У ресторана нет отзывов."
 			)}
+			{auth === "" ? "" : <ReviewForm />}
 		</>
 	);
 };
