@@ -6,12 +6,12 @@ export const AuthUser = () => {
 	const { auth, authorization } = useUser();
 	return (
 		<div
-			className={classnames({ [style.headerUser]: auth != "" ? "active" : "" })}
+			className={classnames({ [style.headerUser]: auth != "" ? "active" : null })}
 		>
 			<span>{auth}</span>
 			<Button
 				className={style.lcBtn}
-				isActive={auth != "" ? "" : "active"}
+				isActive={auth != "" ? null : "active"}
 				onClick={authorization}
 				text={auth != "" ? "Выйти" : "Войти"}
 			/>

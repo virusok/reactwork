@@ -10,5 +10,5 @@ export const MenuPage = () => {
 	);
 	const { menu } = restaurantMenuId;
 
-	return <Menu menuIds={menu} />;
+	return <Menu menuId={menu} />;
 };

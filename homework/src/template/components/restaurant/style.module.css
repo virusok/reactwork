@@ -21,32 +21,12 @@
 	margin: 1px;
 	color: inherit;
 }
-.menuNavigation {
-	text-align: center;
-	color: inherit;
-	text-decoration: none;
-	background: #deebff;
-	border-radius: 1em;
-	padding: 10px;
-	transition: 0.2s;
-	text-decoration: none;
-	margin: 0px 1px;
+.tabSection {
+	margin: 30px 0px;
 }
-.menuNavigation:hover {
-	background: #004cff;
-	color: #fff;
+.tabSection a {
+	margin: 0px 5px;
 }
-
-.white {
-	background: #deebff;
-	cursor: pointer;
-	border: 1px solid transparent;
-}
-.dark {
-	background: #1c2633;
-	color: #fff;
-}
-.dark:hover {
-	background: #3c516e;
-	color: #fff;
+.tabSection a:first-child {
+	margin: 0px;
 }

@@ -1,6 +1,4 @@
-.menuNavigation {
-	display: flex;
-	justify-content: left;
+.linksNavigation {
 	color: inherit;
 	text-decoration: none;
 	background: #deebff;
@@ -9,12 +7,16 @@
 	width: 100%;
 	transition: 0.2s;
 	text-decoration: none;
+	border: 1px solid transparent;
 }
-.menuNavigation:hover {
+.linksNavigation:hover {
 	background: #004cff;
 	color: #fff;
 }
-
+.linksNavigation.active {
+	background: #004cff;
+	color: #fff;
+}
 .white {
 	background: #deebff;
 	cursor: pointer;
