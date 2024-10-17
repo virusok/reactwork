@@ -1,7 +1,7 @@
 import { useForm } from "./useForm";
 import { Counter } from "../counter/Counter";
 import style from "./style.module.css";
-export const ReviewForm = (props) => {
+export const ReviewForm = () => {
 	const {
 		userName,
 		reviewText,
