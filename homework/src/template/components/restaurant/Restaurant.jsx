@@ -1,7 +1,6 @@
 import style from "./style.module.css";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { useTheme } from "../themeProviders/themeContext/useTheme";
 import { ThemeButtons } from "../themeButtons/ThemeButtons";
 export const Restaurant = ({ name }) => {
 	const { restaurantId } = useParams();

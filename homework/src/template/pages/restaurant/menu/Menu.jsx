@@ -1,6 +1,6 @@
 import { Menu } from "../../../components/restaurant/menu/Menu";
 import { useParams } from "react-router-dom";
-import { selectRestaurantById } from "../../../redux/restaurant";
+import { selectRestaurantById } from "../../../redux/restaurants";
 import { useSelector } from "react-redux";
 
 export const MenuPage = () => {
@@ -9,6 +9,5 @@ export const MenuPage = () => {
 		selectRestaurantById(state, restaurantId)
 	);
 	const { menu } = restaurantMenuId;
-
 	return <Menu menuId={menu} />;
 };
