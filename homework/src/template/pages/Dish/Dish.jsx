@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-	selectDishForPage,
+	selectDishById,
 	selectDishForPageRequestStatus,
 } from "../../redux/dishes";
 import { useUser } from "../../components/themeProviders/userContext/useUser";
@@ -15,13 +15,12 @@ import { PENDING, IDLE } from "../../redux/dataStatus";
 export const DishPage = () => {
 	const { dishId } = useParams();
 	const { auth } = useUser();
-	console.log();
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getDish(dishId));
 	}, [dispatch, dishId]);
 
-	const dish = useSelector((state) => selectDishForPage(state, dishId));
+	const dish = useSelector((state) => selectDishById(state, dishId));
 
 	const requestStatus = useSelector(selectDishForPageRequestStatus);
 

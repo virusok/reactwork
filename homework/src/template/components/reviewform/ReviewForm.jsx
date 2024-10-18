@@ -14,7 +14,13 @@ export const ReviewForm = () => {
 	} = useForm();
 
 	return (
-		<form action='#' className={style.form}>
+		<form
+			action='#'
+			className={style.form}
+			onSubmit={(e) => {
+				e.preventDefault();
+			}}
+		>
 			<div className={style.formInput}>
 				<label>Ваше имя</label>
 				<input

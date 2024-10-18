@@ -14,7 +14,6 @@ export const dishesSlice = createSlice({
 	selectors: {
 		selectDishesIds: (state) => state.ids,
 		selectDishById: (state, id) => state.entities[id],
-		selectDishForPage: (state, id) => state.entities[id],
 		selectDishRequestStatus: (state) => state.requestStatus,
 		selectDishForPageRequestStatus: (state) => state.requestStatusForPage,
 	},
@@ -47,6 +46,5 @@ export const {
 	selectDishesIds,
 	selectDishById,
 	selectDishRequestStatus,
-	selectDishForPage,
 	selectDishForPageRequestStatus,
 } = dishesSlice.selectors;
