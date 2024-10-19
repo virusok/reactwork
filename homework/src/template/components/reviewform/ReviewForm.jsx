@@ -1,7 +1,7 @@
 import { useForm } from "./useForm";
 import { Counter } from "../counter/Counter";
 import style from "./style.module.css";
-export const ReviewForm = (props) => {
+export const ReviewForm = () => {
 	const {
 		userName,
 		reviewText,
@@ -14,7 +14,13 @@ export const ReviewForm = (props) => {
 	} = useForm();
 
 	return (
-		<form action='#' className={style.form}>
+		<form
+			action='#'
+			className={style.form}
+			onSubmit={(e) => {
+				e.preventDefault();
+			}}
+		>
 			<div className={style.formInput}>
 				<label>Ваше имя</label>
 				<input
