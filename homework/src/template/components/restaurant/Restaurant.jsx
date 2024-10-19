@@ -1,19 +1,10 @@
 import style from "./style.module.css";
-import { Outlet, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { Outlet } from "react-router-dom";
+// import { useEffect } from "react";
 import { ThemeButtons } from "../themeButtons/ThemeButtons";
-import { selectRestaurantById } from "../../redux/restaurants";
-import { useSelector } from "react-redux";
-export const Restaurant = ({ restaurantId }) => {
-	const navigate = useNavigate();
-	useEffect(() => {
-		navigate("menu");
-	}, [navigate, restaurantId]);
-
-	const restaurant = useSelector((state) =>
-		selectRestaurantById(state, restaurantId)
-	);
-
+// import { selectRestaurantById } from "../../redux/restaurants";
+// import { useSelector } from "react-redux";
+export const Restaurant = ({ restaurant }) => {
 	return (
 		<>
 			<div className={style.restoraneItem}>
