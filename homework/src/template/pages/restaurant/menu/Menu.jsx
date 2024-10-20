@@ -1,28 +1,35 @@
-import { Menu } from "../../../components/restaurant/menu/Menu";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import {
-	selectDishesIds,
-	selectDishRequestStatus,
-} from "../../../redux/dishes";
-import { useDispatch, useSelector } from "react-redux";
-import { getDishes } from "../../../redux/dishes/getDishes";
 import { Preloader } from "../../../components/preloader/Preloader";
-import { IDLE, PENDING } from "../../../redux/dataStatus";
+import { useGetRestaurantMenuQuery } from "../../../redux/services/api/api";
+import { MenuItem } from "../../../components/restaurant/menuItem/menuItem";
+import style from "./style.module.css";
+
 export const MenuPage = () => {
 	const { restaurantId } = useParams();
 
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(getDishes(restaurantId));
-	}, [dispatch, restaurantId]);
+	const { data, isLoading, isError, isFetching } = useGetRestaurantMenuQuery({
+		restaurantId,
+	});
 
-	const restaurantMenuIds = useSelector((state) =>
-		selectDishesIds(state, restaurantId)
-	);
-	const requestStatus = useSelector(selectDishRequestStatus);
-	if (requestStatus === IDLE || requestStatus === PENDING) {
+	if (isLoading || isFetching) {
 		return <Preloader />;
 	}
-	return <Menu menuIds={restaurantMenuIds} />;
+	if (isError) {
+		return `Error data loading`;
+	}
+
+	return (
+		<>
+			<h3>Меню ресторана</h3>
+			{data.length ? (
+				<ul className={style.restoraneCatalog}>
+					{data.map(({ id, name }) => (
+						<MenuItem key={id} id={id} name={name} />
+					))}
+				</ul>
+			) : (
+				"У ресторана нет меню."
+			)}
+		</>
+	);
 };

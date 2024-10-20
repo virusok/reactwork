@@ -10,7 +10,7 @@ export const AuthUser = () => {
 				[style.headerUser]: auth != null ? "active" : null,
 			})}
 		>
-			<span>{auth}</span>
+			<span>{auth != null ? auth.userName : null}</span>
 			<Button
 				className={style.lcBtn}
 				styleActive={auth != null ? "active" : null}

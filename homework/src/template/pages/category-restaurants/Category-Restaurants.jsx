@@ -1,33 +1,29 @@
 import { Outlet } from "react-router-dom";
 import { RestaurantTab } from "../../components/restaurant/restaurant-tab/Restaurant-tab";
-import {
-	selectRestaurantIds,
-	selectRestaurantsRequestStatus,
-} from "../../redux/restaurants";
-import { useDispatch, useSelector } from "react-redux";
+
 import style from "./style.module.css";
-import { getRestaurants } from "../../redux/restaurants/getRestaurants";
-import { useEffect } from "react";
+
 import { Preloader } from "../../components/preloader/Preloader";
-import { IDLE, PENDING } from "../../redux/dataStatus";
+import { useGetRestaurantsQuery } from "../../redux/services/api/api.js";
 
 export const CategoryRestaurants = () => {
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(getRestaurants());
-	}, [dispatch]);
+	const { data, isLoading, isError } = useGetRestaurantsQuery();
 
-	const restaurantsIds = useSelector(selectRestaurantIds);
-	const requestStatus = useSelector(selectRestaurantsRequestStatus);
-
-	if (requestStatus === IDLE || requestStatus === PENDING) {
+	if (isLoading) {
 		return <Preloader />;
 	}
+	if (isError) {
+		return `<div>Error data loading</div>`;
+	}
+	if (!data?.length) {
+		return null;
+	}
+
 	return (
 		<>
 			<div className={style.restoraneNames}>
-				{restaurantsIds.map((id) => (
-					<RestaurantTab id={id} key={id} />
+				{data.map(({ id, name }) => (
+					<RestaurantTab key={id} id={id} name={name} />
 				))}
 			</div>
 			<Outlet />

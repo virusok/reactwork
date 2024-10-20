@@ -1,22 +1,36 @@
-import { getUsers } from "../../redux/users/getUsers";
-import { selectUserById, selectUserRequestStatus } from "../../redux/users";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import style from "./style.module.css";
 import { Preloader } from "../preloader/Preloader";
-import { PENDING, IDLE } from "../../redux/dataStatus";
-export const UsersReview = ({ userId }) => {
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(getUsers(userId));
-	}, [dispatch, userId]);
+import { useGetUsersQuery } from "../../redux/services/api/api";
+import classNames from "classnames";
+export const UsersReview = ({ userId, userName, rating }) => {
+	const { data, isLoading, isError, isFetching } = useGetUsersQuery();
 
-	const user = useSelector((state) => selectUserById(state, userId));
-
-	const requestStatus = useSelector(selectUserRequestStatus);
-
-	if (requestStatus === IDLE || requestStatus === PENDING) {
+	if (isLoading || isFetching) {
 		return <Preloader />;
 	}
-	return <div className={style.userReview}>{user.name}</div>;
+	if (isError) {
+		return `Error data loading`;
+	}
+
+	const user = data.find((user) => user.id === userId);
+	return (
+		<div className={style.userReview}>
+			<div>
+				{user != undefined
+					? user.name
+					: userName != null && userName != ""
+						? userName
+						: "гость"}
+			</div>
+			<div
+				className={classNames(style.rating, {
+					[style.ratingGood]: rating >= 4,
+					[style.ratingMiddle]: rating === 3,
+					[style.ratingBad]: rating < 2,
+				})}
+			>
+				Рейтинг: <span>{rating}</span>
+			</div>
+		</div>
+	);
 };

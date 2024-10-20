@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { UserContext } from ".";
-
 export const UserProvider = ({ children }) => {
 	const [auth, setAuth] = useState(null);
 	const userName = "Pavel (Rubicon)";
-	const authorization = () => {
+	const authorization = useCallback(() => {
 		setAuth((current) => {
 			if (current === null) {
-				return userName;
+				return {
+					userId: "myNewUserID",
+					userName: userName,
+				};
 			} else {
 				return null;
 			}
 		});
-	};
+	}, []);
 	return (
 		<UserContext.Provider value={{ auth, authorization }}>
 			{children}

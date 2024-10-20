@@ -1,0 +1,64 @@
+.restoraneReviews {
+	border: 1px dashed #e5eeff;
+	padding: 10px;
+	list-style: none;
+	border-radius: 1em;
+}
+.restoraneReviews li {
+	margin: 2px 0px;
+	padding: 5px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.restoraneCatalog li {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.reviewEditBtn {
+	background: #ebebeb;
+	padding: 4px 8px;
+	border: none;
+	margin-left: 10px;
+	border-radius: 0.5em;
+	cursor: pointer;
+	transition: 0.2s;
+	font-size: 12px;
+	letter-spacing: 1px;
+}
+.reviewEditBtn:hover {
+	background: rgb(196, 196, 196);
+	padding: 4px 8px;
+	border: none;
+	margin-left: 10px;
+	border-radius: 0.5em;
+	cursor: pointer;
+}
+.smallInput {
+	background: #deebff;
+	border-radius: 0.5em;
+	padding: 4px 6px;
+	border: 1px solid #b6bfd8;
+}
+.acceptBtn {
+	background: #466ea3;
+	border-radius: 0.5em;
+	padding: 4px 6px;
+	border: none;
+	margin: 0px 1px;
+	border: 1px solid #4a577a;
+	color: #fff;
+	cursor: pointer;
+	transition: 0.2s;
+}
+.acceptBtn:hover {
+	background: #004cff;
+	border-radius: 0.5em;
+	padding: 4px 6px;
+	border: none;
+	margin: 0px 1px;
+	border: 1px solid #4a577a;
+	color: #fff;
+	cursor: pointer;
+}

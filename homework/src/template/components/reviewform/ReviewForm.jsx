@@ -1,9 +1,12 @@
 import { useForm } from "./useForm";
 import { Counter } from "../counter/Counter";
 import style from "./style.module.css";
-export const ReviewForm = () => {
+import { useAddReviewMutation } from "../../redux/services/api/api";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../themeProviders/userContext";
+export const ReviewForm = ({ restaurantId }) => {
 	const {
-		userName,
+		nameForForm,
 		reviewText,
 		rating,
 		setName,
@@ -13,6 +16,14 @@ export const ReviewForm = () => {
 		counterMinusRating,
 	} = useForm();
 
+	const { auth } = useContext(UserContext);
+	const { userId, userName } = auth;
+	const [addReview] = useAddReviewMutation();
+
+	useEffect(() => {
+		setName(userName);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [userName]);
 	return (
 		<form
 			action='#'
@@ -25,8 +36,10 @@ export const ReviewForm = () => {
 				<label>Ваше имя</label>
 				<input
 					type='text'
-					value={userName}
-					onChange={(event) => setName(event.target.value)}
+					value={nameForForm}
+					onChange={(event) => {
+						setName(event.target.value);
+					}}
 				/>
 			</div>
 			<div className={style.formInput}>
@@ -47,6 +60,22 @@ export const ReviewForm = () => {
 			</div>
 			<button onClick={clearForm} className={style.formClear}>
 				Очистить
+			</button>
+
+			<button
+				onClick={() =>
+					addReview({
+						restaurantId,
+						review: {
+							userId: userId,
+							userName: nameForForm,
+							text: reviewText,
+							rating,
+						},
+					})
+				}
+			>
+				Отправить
 			</button>
 		</form>
 	);
