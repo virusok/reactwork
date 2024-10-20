@@ -1,0 +1,7 @@
+.selectRestaurant {
+	width: 200px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 1px 5px;
+}

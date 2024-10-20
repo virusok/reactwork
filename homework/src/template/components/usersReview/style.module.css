@@ -1,0 +1,29 @@
+.userReview {
+	margin-right: 10px;
+	font-size: 14px;
+	margin-bottom: 5px;
+	border-left: 2px solid rgb(158, 8, 228);
+	padding-left: 10px;
+	display: flex;
+	align-items: center;
+}
+.rating {
+	font-size: 12px;
+	margin-left: 5px;
+	padding: 2px 6px;
+	border-radius: 0.5em;
+}
+.rating span {
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 3px;
+}
+.ratingGood span {
+	color: #1ea30c;
+}
+.ratingMiddle span {
+	color: #d4b60c;
+}
+.ratingBad span {
+	color: #d4130c;
+}
