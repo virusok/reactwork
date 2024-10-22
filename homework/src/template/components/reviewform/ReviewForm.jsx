@@ -1,10 +1,21 @@
 import { useForm } from "./useForm";
 import { Counter } from "../counter/Counter";
 import style from "./style.module.css";
-import { useAddReviewMutation } from "../../redux/services/api/api";
-import { useContext, useEffect, useState } from "react";
+import {
+	useAddReviewMutation,
+	useEditReviewMutation,
+} from "../../redux/services/api/api";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../themeProviders/userContext";
-export const ReviewForm = ({ restaurantId }) => {
+
+export const ReviewForm = ({
+	restaurantId,
+	isEdit,
+	data,
+	disableEdit,
+	refetch,
+	usrData,
+}) => {
 	const {
 		nameForForm,
 		reviewText,
@@ -18,15 +29,28 @@ export const ReviewForm = ({ restaurantId }) => {
 
 	const { auth } = useContext(UserContext);
 	const { userId, userName } = auth;
+
 	const [addReview] = useAddReviewMutation();
+	const [editReview] = useEditReviewMutation();
 
 	useEffect(() => {
-		setName(userName);
+		if (isEdit !== null && data) {
+			if (data.userId != userId) {
+				const userOnUserBase = usrData.find(({ id }) => id == data.userId);
+				setName(userOnUserBase.name);
+			} else {
+				setName(data.userName);
+			}
+
+			setReview(data.text);
+		} else {
+			setName(userName);
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [userName]);
+	}, [data, userName, isEdit]);
+
 	return (
 		<form
-			action='#'
 			className={style.form}
 			onSubmit={(e) => {
 				e.preventDefault();
@@ -37,9 +61,7 @@ export const ReviewForm = ({ restaurantId }) => {
 				<input
 					type='text'
 					value={nameForForm}
-					onChange={(event) => {
-						setName(event.target.value);
-					}}
+					onChange={(event) => setName(event.target.value)}
 				/>
 			</div>
 			<div className={style.formInput}>
@@ -61,19 +83,30 @@ export const ReviewForm = ({ restaurantId }) => {
 			<button onClick={clearForm} className={style.formClear}>
 				Очистить
 			</button>
-
 			<button
-				onClick={() =>
-					addReview({
-						restaurantId,
-						review: {
-							userId: userId,
-							userName: nameForForm,
-							text: reviewText,
-							rating,
-						},
-					})
-				}
+				onClick={() => {
+					isEdit === null
+						? addReview({
+								restaurantId,
+								review: {
+									userId,
+									userName: nameForForm,
+									text: reviewText,
+									rating,
+								},
+							})
+						: editReview({
+								reviewId: data.id,
+								newReview: {
+									userName: nameForForm,
+									text: reviewText,
+									rating,
+								},
+							}).then(() => {
+								disableEdit();
+								refetch();
+							});
+				}}
 			>
 				Отправить
 			</button>

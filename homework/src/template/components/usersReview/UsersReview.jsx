@@ -1,10 +1,16 @@
 import style from "./style.module.css";
 import { Preloader } from "../preloader/Preloader";
-import { useGetUsersQuery } from "../../redux/services/api/api";
-import classNames from "classnames";
-export const UsersReview = ({ userId, userName, rating }) => {
-	const { data, isLoading, isError, isFetching } = useGetUsersQuery();
 
+import classNames from "classnames";
+export const UsersReview = ({
+	userId,
+	userName,
+	rating,
+	data,
+	isLoading,
+	isError,
+	isFetching,
+}) => {
 	if (isLoading || isFetching) {
 		return <Preloader />;
 	}

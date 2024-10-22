@@ -31,12 +31,12 @@ export const apiSlice = createApi({
 			invalidatesTags: ({ restaurantId }) => [{ type: "Reviews", restaurantId }],
 		}),
 		editReview: builder.mutation({
-			query: ({ newReview }) => ({
-				url: `/review/${newReview.id}`,
+			query: ({ reviewId, newReview }) => ({
+				url: `/review/${reviewId}`,
 				method: "PATCH",
 				body: newReview,
+				invalidatesTags: [{ type: "Reviews", id: reviewId }],
 			}),
-			invalidatesTags: ({ restaurantId }) => [{ type: "Reviews", restaurantId }],
 		}),
 	}),
 });

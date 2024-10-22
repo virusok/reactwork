@@ -27,6 +27,10 @@
 	font-size: 12px;
 	letter-spacing: 1px;
 }
+.active {
+	background: #004cff;
+	color: #fff;
+}
 .reviewEditBtn:hover {
 	background: rgb(196, 196, 196);
 	padding: 4px 8px;
