@@ -5,3 +5,7 @@ body {
 	background: #fff;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.active {
+	background: #004cff;
+	color: #fff;
+}
