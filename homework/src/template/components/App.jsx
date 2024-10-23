@@ -1,3 +1,4 @@
+"use client";
 import { ThemeProvider } from "./themeProviders/themeContext/themeContext";
 import { UserProvider } from "./themeProviders/userContext/userContext";
 import { Provider } from "react-redux";
@@ -16,50 +17,50 @@ const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Layout />,
-		children: [
-			{
-				index: true,
-				element: <HomePage />,
-			},
-			{
-				path: "restaurants",
-				element: <CategoryRestaurants />,
-				children: [
-					{
-						path: ":restaurantId",
-						element: <RestaurantPage />,
-						children: [
-							{
-								path: "menu",
-								element: <MenuPage />,
-							},
-							{
-								path: "reviews",
-								element: <ReviewsPage />,
-							},
-						],
-					},
-				],
-			},
-			{
-				path: "dish/:dishId",
-				element: <DishPage />,
-			},
-			{
-				path: "*",
-				element: <Page404 />,
-			},
-		],
+		// children: [
+		// 	{
+		// 		index: true,
+		// 		element: <HomePage />,
+		// 	},
+		// 	{
+		// 		path: "restaurants",
+		// 		element: <CategoryRestaurants />,
+		// 		children: [
+		// 			{
+		// 				path: ":restaurantId",
+		// 				element: <RestaurantPage />,
+		// 				children: [
+		// 					{
+		// 						path: "menu",
+		// 						element: <MenuPage />,
+		// 					},
+		// 					{
+		// 						path: "reviews",
+		// 						element: <ReviewsPage />,
+		// 					},
+		// 				],
+		// 			},
+		// 		],
+		// 	},
+		// 	{
+		// 		path: "dish/:dishId",
+		// 		element: <DishPage />,
+		// 	},
+		// 	{
+		// 		path: "*",
+		// 		element: <Page404 />,
+		// 	},
+		// ],
 	},
 ]);
 export const App = () => {
 	return (
-		<Provider store={store}>
-			<ThemeProvider>
-				<UserProvider>
-					<RouterProvider router={router} />
-				</UserProvider>
-			</ThemeProvider>
-		</Provider>
+		<ThemeProvider>
+			<UserProvider>
+				<RouterProvider router={router} />
+			</UserProvider>
+		</ThemeProvider>
 	);
 };
+
+export default App;

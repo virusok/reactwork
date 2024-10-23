@@ -6,10 +6,7 @@
 	border-radius: 1em;
 	box-shadow: 0 0 10px 2px rgb(0 0 0 / 6%);
 }
-h1,
-h2 {
-	text-align: center;
-}
+
 .dishPrice {
 	margin: 10px auto;
 	background-color: #d6f7dc;
