@@ -1,15 +1,12 @@
 import style from "./style.module.css";
 import { Button } from "../Button/Button";
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/restaurant";
-export const Tabmenu = ({ id, tabSelector, tabActive }) => {
-	const restaurant = useSelector((state) => selectRestaurantById(state, id));
+export const Tabmenu = ({ title, tabSelector, tabActive }) => {
 	return (
 		<>
 			<Button
-				isActive={tabActive === restaurant.id}
-				text={restaurant.name}
-				onClick={() => tabSelector(restaurant.id)}
+				isActive={tabActive}
+				text={title}
+				onClick={tabSelector}
 				className={style.btnMargin}
 			/>
 		</>
