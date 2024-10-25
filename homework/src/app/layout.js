@@ -1,3 +1,7 @@
+import App from "../template/components/App";
+import { Layout } from "../template/components/layout/Layout";
+import { ReduxProvider } from "../template/redux/ReduxProvider";
+import "./styles/global.css";
 export const metadata = {
 	title: "React Restaurants. Learn React",
 	description: "Demo descriptions",
@@ -7,7 +11,13 @@ export default function RootLayout({ children }) {
 		<html lang='en'>
 			<head>{/* тут я могу что то добавить своё. Это тоже учтется */}</head>
 			<body>
-				<div id='root'>{children}</div>
+				<ReduxProvider>
+					<div id='root'>
+						<App>
+							<Layout>{children}</Layout>
+						</App>
+					</div>
+				</ReduxProvider>
 			</body>
 		</html>
 	);

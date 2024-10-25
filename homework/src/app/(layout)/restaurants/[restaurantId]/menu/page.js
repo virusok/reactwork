@@ -1,10 +1,12 @@
-import { useParams } from "react-router-dom";
-import { Preloader } from "../../../components/preloader/Preloader";
-import { useGetRestaurantMenuQuery } from "../../../redux/services/api/api";
-import { MenuItem } from "../../../components/restaurant/menuItem/menuItem";
+"use client";
+import { useGetRestaurantMenuQuery } from "../../../../../template/redux/services/api/api";
+import { MenuItem } from "../../../../../template/components/restaurant/menuItem/menuItem";
+import { Preloader } from "../../../../../template/components/preloader/Preloader";
+import { useParams } from "next/navigation";
+
 import style from "./style.module.css";
 
-export const MenuPage = () => {
+export default function RestaurantMenu() {
 	const { restaurantId } = useParams();
 
 	const { data, isLoading, isError, isFetching } = useGetRestaurantMenuQuery({
@@ -32,4 +34,4 @@ export const MenuPage = () => {
 			)}
 		</>
 	);
-};
+}

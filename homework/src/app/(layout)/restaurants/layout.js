@@ -1,13 +1,11 @@
 "use client";
-import { Outlet } from "react-router-dom";
-import { RestaurantTab } from "../../template/components/restaurant/restaurant-tab/Restaurant-tab.jsx";
+import { Preloader } from "../../../template/components/preloader/Preloader.jsx";
+import { useGetRestaurantsQuery } from "../../../template/redux/services/api/api.js";
+import { RestaurantTab } from "../../../template/components/restaurant/restaurant-tab/Restaurant-tab.jsx";
 import style from "./style.module.css";
-import { Preloader } from "../../template/components/preloader/Preloader.jsx";
-import { useGetRestaurantsQuery } from "../../template/redux/services/api/api.js";
 
-export default function Page() {
+export default function RestaurantsLayout({ children }) {
 	const { data, isLoading, isError } = useGetRestaurantsQuery();
-
 	if (isLoading) {
 		return <Preloader />;
 	}
@@ -24,7 +22,7 @@ export default function Page() {
 					<RestaurantTab key={id} id={id} name={name} />
 				))}
 			</div>
-			<Outlet />
+			{children}
 		</>
 	);
 }

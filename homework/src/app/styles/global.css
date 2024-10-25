@@ -3,7 +3,7 @@ body {
 	margin: 0;
 	color: #11306b;
 	background: #fff;
-	font-family: "Verdana, Geneva, Tahoma, sans-serif";
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .active {
 	background: #004cff;
