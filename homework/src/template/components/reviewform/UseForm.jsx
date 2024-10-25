@@ -9,7 +9,7 @@ const SET_RATING_PLUS = "counterPlusRating";
 const SET_RATING_MINUS = "counterMinusRating";
 
 const DEFAULT_VALUES = {
-	userName: "",
+	nameForForm: "",
 	reviewText: "",
 	rating: ratingMinCounter,
 };
@@ -20,7 +20,7 @@ const reducer = (state, action) => {
 		case SET_NAME:
 			return {
 				...DEFAULT_VALUES,
-				userName: element,
+				nameForForm: element,
 			};
 		case SET_REVIEW:
 			return {
@@ -49,7 +49,7 @@ const reducer = (state, action) => {
 
 export const useForm = () => {
 	const [form, dispatch] = useReducer(reducer, DEFAULT_VALUES);
-	const { userName, reviewText, rating } = form;
+	const { nameForForm, reviewText, rating } = form;
 
 	const setName = (value) => {
 		dispatch({ type: SET_NAME, element: value });
@@ -67,7 +67,7 @@ export const useForm = () => {
 		dispatch({ type: CLEAR_FORM });
 	};
 	return {
-		userName,
+		nameForForm,
 		reviewText,
 		setName,
 		setReview,
